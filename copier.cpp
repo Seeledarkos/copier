@@ -2,12 +2,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 // Прототипы функций
 int checker(int argc, char** argv);
 void helpPage();
 char localeFinder();
 
 int main(int argc, char ** argv) {
+	setlocale(0, "ru");
 	checker(argc, argv);
 	return 0;
 }
@@ -17,18 +19,20 @@ int checker(int argc, char** argv) {
 		helpPage();
 		return 0;
 	}
-	
-	FILE* what = fopen(argv[1], "r");
+	// ./copier --from "..." --to "..."
+	FILE* what = fopen(argv[2], "rb");
 	// rb -> read binary
-	FILE* toWhere = fopen(argv[2], "w");
+	FILE* toWhere = fopen(argv[4], "wb");
 	// w -> write
 
 	if (what == NULL) {
 		perror("ТЫ НВАХ!");
+		printf("Укажи правильный путь до файла");
 		return -1;
 	}
 	if (toWhere == NULL) {
-		perror("ПУТЬ СУКА? NO PATHS???");
+		perror("ТЫ ГРЯЗНЫЙ НВАХ!");
+		printf("Укажи верный путь куда");
 	}
 
 	char buffer;
@@ -51,7 +55,7 @@ char localeFinder() {
 }
 
 void helpPage() {
-	printf("Copier v0.6.6.6 by seeledakos.\n");
+	printf("Copier v0	.6.6.6 by seeledakos.\n");
 	printf("Using:\n");
 	printf("--from <path\\file.ext> --to <path\\file.ext2>");
 	printf("--help: display this.");
