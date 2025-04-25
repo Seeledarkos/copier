@@ -1,2 +1,3 @@
 ﻿  copier.cpp
+C:\Users\user0x0001\source\repos\copier\copier.cpp(19,1): warning C4715: checker: значение возвращается не при всех путях выполнения
   copier.vcxproj -> C:\Users\user0x0001\source\repos\copier\x64\Debug\copier.exe
