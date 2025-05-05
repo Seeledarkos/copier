@@ -21,14 +21,16 @@ int checker(int argc, char** argv) {
 int main(int argc, char** argv){
 	setlocale(0, "ru");
 	checker(argc, argv);
-	return 0;
-
+	
+	char* whatToDo = argv[5];
+	
 	// ./copier --from "..." --to "..."
 	FILE* what = fopen(argv[2], "rb");
 	// rb -> read binary
 	FILE* toWhere = fopen(argv[4], "wb");
 	// w -> write
-
+	 
+	
 	if (what == NULL) {
 		perror("ТЫ НВАХ!");
 		printf("Укажи правильный путь до файла");
@@ -49,6 +51,15 @@ int main(int argc, char** argv){
 	}
 	fclose(what);
 	fclose(toWhere);
+	
+	printf("specialArgument: %s", argv[5]);
+
+	if (strcmp(argv[5], "--cut") == 0) {
+		int deleteAttempt = remove(argv[2]);
+		printf("deleteAttemptState %d", deleteAttempt);
+		return deleteAttempt;
+	}
+
 	return 0;
 }
 
