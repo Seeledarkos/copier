@@ -33,12 +33,12 @@ int main(int argc, char** argv){
 	
 	if (what == NULL) {
 		perror("ТЫ НВАХ!");
-		printf("Укажи правильный путь до файла");
+		printf("Сверься с картой.");
 		return -1;
 	}
 	if (toWhere == NULL) {
 		perror("ТЫ ГРЯЗНЫЙ НВАХ!");
-		printf("Укажи верный путь куда");
+		printf("Путь твой неверный.");
 	}
 
 	char buffer;
